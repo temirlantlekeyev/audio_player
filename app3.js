@@ -23,6 +23,7 @@ function setMusic() {
         musicDuration.textContent = formatTime(audio.duration);
         progress.max = 100;
         updateProgress(); // Update progress once metadata is loaded
+        console.log("hello")
     });
 
     audio.addEventListener("timeupdate", updateProgress);
@@ -49,16 +50,20 @@ function updateProgress() {
         currentTime.textContent = formatTime(audio.currentTime);
         const percent = (audio.currentTime / audio.duration) * 100;
         progress.value = percent;
+        // progress.style.setProperty("--progress", `${percent}%`)
     }
 }
 
 progress.addEventListener("input", () => {
     const time = (progress.value / 100) * audio.duration;
     audio.currentTime = time;
+    // progress.style.setProperty("--progress", `${progress.value}%`)
+    console.log(time)
 });
 
 audio.addEventListener("ended", () => {
     nextTrack();
+    console.log("aaa")
 });
 
 nextBtn.addEventListener("click", nextTrack);
@@ -92,6 +97,7 @@ function loadTrack() {
     if (isPlaying) {
         audio.play();
     }
+    console.log("loooaaad")
 
     // Update the UI once the metadata is loaded
     audio.addEventListener("loadedmetadata", () => {
