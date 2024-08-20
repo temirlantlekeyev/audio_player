@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="wrap">
+        <!-- <img  class="bg-cover" src="./cover list/kendrick.jpeg"/> -->
+        <p class="title">Temirlan's Audio Player</p>
+       
+        <div class="playlistContainer">
+            
+        <div class="imageContainer">
+            <img class="image" src="./cover list/kendrick.jpeg"/>
+        </div>
+
+        <div class="nameWrap">
+            <div class="songName">Not like us</div>
+            <div class="artistName">Kendrick Lamar</div>
+        </div>
+
+        <!-- <audio class="audio">
+            <source src="" type="audio/mpeg">
+        </audio> -->
+
+        <div class="durationContainer"> 
+        <div class="currentTime">00:00</div>
+        <div class="musicDuration">00:00</div>
+        </div>
+     
+        <input class="progress" type="range" min="0" max="100" value="0"/>
+
+        <div class="icons">
+        <i id="back" class="fa-solid fa-backward"></i>
+        <!-- <i id="pause" class="fa-solid fa-pause"></i> -->
+        <i id="play" class="fa-solid fa-play"></i>
+        <i id="next" class="fa-solid fa-forward"></i>
+        </div>
+
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="app3.js"></script>
+    <!-- <script src="app.js"></script> -->
+</body>
+</html>
