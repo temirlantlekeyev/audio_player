@@ -7,6 +7,7 @@ const musicDuration = document.querySelector(".musicDuration");
 const songName = document.querySelector(".songName");
 const artistName = document.querySelector(".artistName");
 const image = document.querySelector(".image");
+const random = document.querySelector("#random")
 
 let audio = new Audio();
 let isPlaying = false;
@@ -22,14 +23,15 @@ function setMusic() {
     audio.addEventListener("loadedmetadata", () => {
         musicDuration.textContent = formatTime(audio.duration);
         progress.max = 100;
-        updateProgress(); // Update progress once metadata is loaded
-        console.log("hello")
+        updateProgress(); 
     });
 
     audio.addEventListener("timeupdate", updateProgress);
 }
 
 setMusic();
+
+
 
 playBtn.addEventListener("click", () => {
     if (audio.paused) {
@@ -58,15 +60,20 @@ progress.addEventListener("input", () => {
     const time = (progress.value / 100) * audio.duration;
     audio.currentTime = time;
     // progress.style.setProperty("--progress", `${progress.value}%`)
-    console.log(time)
 });
 
 audio.addEventListener("ended", () => {
     nextTrack();
-    console.log("aaa")
 });
 
-nextBtn.addEventListener("click", nextTrack);
+nextBtn.addEventListener("click", ()=> {
+    if (currentSongIndex < songs.length - 1) {
+        currentSongIndex++;
+    } else {
+        currentSongIndex = 0;
+    }
+    loadTrack();
+});
 
 backBtn.addEventListener("click", () => {
     if (currentSongIndex > 0) {
@@ -77,14 +84,7 @@ backBtn.addEventListener("click", () => {
     loadTrack();
 });
 
-function nextTrack() {
-    if (currentSongIndex < songs.length - 1) {
-        currentSongIndex++;
-    } else {
-        currentSongIndex = 0;
-    }
-    loadTrack();
-}
+
 
 function loadTrack() {
     currentSong = songs[currentSongIndex];
@@ -99,10 +99,9 @@ function loadTrack() {
     }
     console.log("loooaaad")
 
-    // Update the UI once the metadata is loaded
     audio.addEventListener("loadedmetadata", () => {
         musicDuration.textContent = formatTime(audio.duration);
-        progress.value = 0; // Reset progress when track is loaded
+        progress.value = 0; 
     });
 }
 
